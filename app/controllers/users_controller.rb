@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-
-    # will return null here if user not found.
+    # will return empty set here if user not found.
     respond_to do |format|
       if params[:filter]
         format.json { render json: User.find_by(username: params[:filter][:username], password: params[:filter][:password]) }
@@ -34,7 +33,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    # debugger
+    # debugger - way to debug in ror
     username = params[:data][:attributes][:username]
     password = params[:data][:attributes][:password]
     @user = User.new(username: username,password:password)
